@@ -10,7 +10,7 @@ List<NewsCard> newsList = [
 
 ];
 
-void getData( String newsType, BuildContext context ) async{
+void getData( String newsType, BuildContext context, Function changeMode ) async{
 
   API.Response response = await API.get( Uri.parse(kNewsType + newsType + kNumber + "15") );
 
@@ -33,12 +33,12 @@ void getData( String newsType, BuildContext context ) async{
 
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, ))
+    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, changeMode: changeMode, ))
   );
 
 }
 
-void changeData ( String newsType, BuildContext context) async{
+void changeData ( String newsType, BuildContext context, Function changeMode) async{
   newsType = newsType.toLowerCase();
 
   if(newsType == "home"){
@@ -66,6 +66,6 @@ void changeData ( String newsType, BuildContext context) async{
 
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, ))
+    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, changeMode: changeMode, ))
   );
 }
