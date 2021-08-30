@@ -11,41 +11,41 @@ class NewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
         ),
-
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            
-            Image.network(imageURL),
-
-            SizedBox(
-              height: 20,
-            ),
-
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              
+              Image.network(imageURL),
+      
+              SizedBox(
+                height: 20,
               ),
-              textScaleFactor: 1.5,
-            ),
-
-            SizedBox(height: 20,),
-
-            Text(
-              desc,
-              style: TextStyle(
-                
+      
+              Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+                textScaleFactor: 1.5,
               ),
-              textScaleFactor: 1.3,
-            ),
-
-          ],
+      
+              SizedBox(height: 20,),
+      
+              Text(
+                desc,
+                style: TextStyle(
+                  
+                ),
+                textScaleFactor: 1.3,
+              ),
+      
+            ],
+          ),
         ),
       ),
     );
