@@ -64,9 +64,9 @@ class _MyAppState extends State<MyApp> {
       )
       :
       ThemeData(
-        scaffoldBackgroundColor: Colors.orange[400],
+        scaffoldBackgroundColor: Colors.orange,
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.orange[400],
+          backgroundColor: Colors.orange,
         ),
       ),
 
