@@ -10,6 +10,8 @@ List<NewsCard> newsList = [
 
 ];
 
+bool dataAvailable = true;
+
 void getData( String newsType, BuildContext context, Function changeMode ) async{
 
   API.Response response = await API.get( Uri.parse(kNewsType + newsType + kNumber + "15") );
@@ -33,7 +35,7 @@ void getData( String newsType, BuildContext context, Function changeMode ) async
 
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, changeMode: changeMode, ))
+    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, changeMode: changeMode, newsType: newsType,))
   );
 
 }
@@ -66,6 +68,59 @@ void changeData ( String newsType, BuildContext context, Function changeMode) as
 
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, changeMode: changeMode, ))
+    MaterialPageRoute(builder: (context) => MainScreen( newslist: newsList, changeMode: changeMode, newsType: newsType,))
   );
 }
+
+void checkData(int count, String newsType, Function updateList) async {
+
+  int request = 10 + (count * 5) + 2;
+  int head = newsList.length;
+
+  API.Response response = await API.get( Uri.parse(kNewsType + newsType + kNumber + request.toString()) );
+
+  var aditionalData = response.body;
+
+  int articlesGot = jsonDecode(aditionalData) ["total"];
+
+  if(articlesGot <= request){
+    dataAvailable =  true;
+    for(int i=0; i<5; i++){
+      NewsCard newCard = NewsCard(
+        imageURL: jsonDecode(aditionalData) ['articles'] [head] ['image_url'],
+        title: jsonDecode(aditionalData) ['articles'] [head] ['title'],
+        desc: jsonDecode(aditionalData) ['articles'] [head] ['description'],
+      ); 
+      print(jsonDecode(aditionalData) ['articles'] [head] ['title']);
+      head++;
+
+      updateList(newsList, newCard);
+    }
+  }
+  else {
+    dataAvailable = false;
+  }
+
+}
+
+// void getMoreData(int count, String newsType, Function updateList)async{
+//   int request = 10 + (count * 5) + 2;
+//   int head = newsList.length;
+
+//   API.Response response = await API.get( Uri.parse(kNewsType + newsType + kNumber + request.toString()) );
+
+//   var aditionalData = response.body;
+
+//   for(int i=0; i<5; i++){
+//     NewsCard newCard = NewsCard(
+//       imageURL: jsonDecode(aditionalData) ['articles'] [head] ['image_url'],
+//       title: jsonDecode(aditionalData) ['articles'] [head] ['title'],
+//       desc: jsonDecode(aditionalData) ['articles'] [head] ['description'],
+//     ); 
+//     print(jsonDecode(aditionalData) ['articles'] [head] ['title']);
+//     head++;
+
+//     updateList(newsList, newCard);
+//   }
+
+// }
