@@ -12,7 +12,7 @@ Flutter app for getting live news in different categories
 
 ## Get the App for free
  - For Andriod
-    - [Google drive link for apk file here](https://drive.google.com/file/d/13hHCZ9KrD0aYv0g9whlyqz45PqsFvMlt/view?usp=sharing)
+    - [Google drive link for apk file here](https://drive.google.com/file/d/145ifmdt8n9FmfdM4XzTOGl_qM6FimC8q/view?usp=sharing)
  - Not available for IOS yet
 
 ## Features
@@ -26,5 +26,7 @@ Flutter app for getting live news in different categories
 
 
 
-https://user-images.githubusercontent.com/82216732/131352921-7b3a91fd-bf70-4d9b-86e7-5da9b0b6dd6c.mp4
+https://user-images.githubusercontent.com/82216732/131454278-3ce2a09e-d124-436b-9ea7-89e7d61b9e07.mp4
+
+
 
