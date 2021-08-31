@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_observer_flutter/constants/constans.dart';
 import 'package:the_observer_flutter/screens/loadingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -55,20 +56,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      theme: darkMode ? 
-      ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.grey[900],
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.grey[900],
-        )
-      )
-      :
-      ThemeData(
-        scaffoldBackgroundColor: Colors.orange,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.orange,
-        ),
-      ),
+      theme: darkMode ? kDarkModeTheme : kLightmodeTheme,
 
       home: Scaffold(
         appBar: AppBar(
